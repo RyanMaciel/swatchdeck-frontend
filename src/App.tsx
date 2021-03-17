@@ -2,7 +2,7 @@ import React from 'react';
 import Item from './pages/Item/Item';
 import Designer from './pages/Designer/Designer';
 import Feed from './pages/Feed/Feed';
-
+import Login from './pages/Login/Login';
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +22,9 @@ function App() {
         </Route>
         <Route path="/feed">
             <Feed />
+        </Route>
+        <Route path="/login">
+            <Login />
         </Route>
       </Switch>
     </Router>
