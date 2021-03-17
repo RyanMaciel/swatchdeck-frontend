@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './DesignerItemThumb.module.css';
 import { Link } from "react-router-dom";
+import styles from './DesignerItemThumb.module.css';
 
 type DesignerItemThumbProps = {
     img: any,
@@ -14,15 +14,6 @@ function DesignerItemThumb({img, title, includeDesigner=false, designerImg}:Desi
   return (
     <Link to="/">
         <div id={styles.card}>
-            {includeDesigner &&
-              <Link to="/designer">
-
-                <div id={styles.profileHeader}>
-                  <img id={styles.designerProfileImage} src={designerImg}/>
-                  Designer
-                </div>
-              </Link>
-            }
             <img src={img}/>
             <div>
                 {title}

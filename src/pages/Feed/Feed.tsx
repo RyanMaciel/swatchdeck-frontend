@@ -1,9 +1,29 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import Paper from '../../common/Paper';
 import DesignerItemThumb from '../../common/DesignerItemThumb';
 import HeaderToolbar from '../../common/HeaderToolbar';
 import img from '../Item/image1.png';
 import styles from './Feed.module.css';
+
+type DesignerItemThumbProps = {
+  designerImg: any,
+}
+function FeedPostHeader({designerImg, children}:DesignerItemThumbProps | React.PropsWithChildren<any>){
+  return (
+    <div className={styles.feedPostHeaderContainer}>
+      <Link to="/designer">
+        <div className={styles.profileHeader}>
+          <img className={styles.designerProfileImage} src={designerImg}/>
+          Designer
+        </div>
+      </Link>
+      <div>
+        {children}
+      </div>
+    </div>
+  )
+}
 
 function Designer() {
   type FeedContents = {
@@ -54,22 +74,22 @@ function Designer() {
   return (
     <HeaderToolbar>
       <div id={styles.feedContainer}>
-        <Paper style={{margin: 0}}>
+        <Paper>
           {multitypeData.map((item:FeedItem, index)=>{
             return (
               <div className={styles.feedEntryContainer} key={index}>
-                {item.type === 'item' &&
-                  <div className={styles.feedItemContainer}>
-                    <DesignerItemThumb img={item.contents.image} title={item.contents.text} includeDesigner={true} designerImg={img}/>
-                  </div>
-                }
-                {item.type === 'text' &&
-                  <Paper>
+                <FeedPostHeader designerImg={img}>
+                  {item.type === 'item' &&
+                    <div className={styles.feedItemContainer}>
+                      <DesignerItemThumb img={item.contents.image} title={item.contents.text} includeDesigner={true} designerImg={img}/>
+                    </div>
+                  }
+                  {item.type === 'text' &&
                     <div className={styles.feedTextContainer} key={index}>
                       {item.contents.text}
                     </div>
-                  </Paper>
-                }
+                  }
+                </FeedPostHeader>
               </div>
             )
             
