@@ -2,12 +2,47 @@
     width: 100%
 }
 #toolbarContainer{
-    height: 20px;
+    height: 40px;
     padding: 15px;
     background-color: white;
     border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
 }
 #pageContent{
     overflow-y: scroll;
     height: calc(100vh - 20px);
+}
+
+#userButton{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: lightgray;
+}
+
+#dropdownContainer{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.dropdown{
+    background-color: white;
+    border: 1px solid lightgray;
+    width: 200px;
+    margin-top:10px;
+    border-radius: 5px;
+}
+
+#dropdownExpanded{
+    visibility: visible;
+}
+#dropdownClosed{
+    visibility: hidden;
+}
+
+.dropdownEntry{
+    height: 40px;
+    border-bottom: 1px solid lightgray;
 }

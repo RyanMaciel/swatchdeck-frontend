@@ -9,23 +9,27 @@ import HeaderToolbar from '../../common/HeaderToolbar';
 
 
 function LoginContents() {
-  const { data: user } = useUser();
-  if (!user) {
-    const fireAuth = useAuth
+  const userInitialVal = 'not-yet-found';
+  const fireAuth = useAuth
+  const fireAuthCalled = fireAuth()
+  const { data: user } = useUser(fireAuthCalled, {initialData: userInitialVal});
+
+  // If the user isn't our placeholder value (ie. its been fetched) and it's null,
+  // Then go log them in.
+  if (!(typeof user === 'string' && user === userInitialVal) && !user) {
+
+    // Redirect w/ google oath.
     var provider = new fireAuth.GoogleAuthProvider;
-    const fireAuthCalled = fireAuth()
     fireAuthCalled
     .getRedirectResult()
     .then((result) => {
-      console.log(result);
-      debugger;
+
+      // If there was no redirect operation called.
       if (result.user == null) {
         fireAuthCalled.signInWithRedirect(provider).then((result)=>{
           console.log(result);
-          debugger;
         }).catch((err)=>{
           console.log(err);
-          debugger;
         });
       }
       if (result.credential) {
