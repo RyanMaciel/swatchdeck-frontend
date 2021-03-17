@@ -16,7 +16,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Item />
+          <Feed />
         </Route>
         <Route path="/designer">
             <Designer />
@@ -29,6 +29,9 @@ function App() {
         </Route>
         <Route path="/post">
           <Path/>
+        </Route>
+        <Route path="/item">
+          <Item />
         </Route>
       </Switch>
     </Router>

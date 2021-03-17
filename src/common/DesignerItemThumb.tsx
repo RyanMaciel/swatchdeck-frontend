@@ -7,12 +7,13 @@ type DesignerItemThumbProps = {
     title: string,
     className?: string,
     includeDesigner?: boolean,
+    link?:string,
     designerImg?: any
 }
 
-function DesignerItemThumb({img, title, includeDesigner=false, designerImg}:DesignerItemThumbProps) {
+function DesignerItemThumb({img, title, includeDesigner=false, designerImg, link}:DesignerItemThumbProps) {
   return (
-    <Link to="/">
+    <Link to={link ? link : '/'}>
         <div id={styles.card}>
             <img src={img}/>
             <div>
