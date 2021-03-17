@@ -1,6 +1,9 @@
 import React from 'react';
 import './Item.css'
 import image from './image1.png';
+import ImageGallery from './ImageGallery';
+import SourceMaterialView from './SourceMaterialView';
+
 function Item() {
     return (
         <div id='container'>
@@ -19,36 +22,9 @@ function Item() {
                     <div id='divider'></div>
                     <div id='right-side-container'>    
                         <div id='large-image-container'>
-                            <img src={image}/>
+                            <ImageGallery imageNames={[image]}/>
                         </div>
-                        <span className='header'>Source Material</span>
-                        <div className='horizontal-divider'></div>
-                        <div id='source-material-item-container'>
-                            <div className='source-material-item'>
-                                hello
-                            </div>
-                            <div className='source-material-item'>
-                                hello
-                            </div>
-                            <div className='source-material-item'>
-                                hello
-                            </div>
-                            <div className='source-material-item'>
-                                hello
-                            </div>
-                            <div className='source-material-item'>
-                                hello
-                            </div>
-                            <div className='source-material-item'>
-                                hello
-                            </div>
-                            <div className='source-material-item'>
-                                hello
-                            </div>
-                            <div className='source-material-item'>
-                                hello
-                            </div>
-                        </div>
+                        <SourceMaterialView/>
                     </div>
                 </div>
             </div>
