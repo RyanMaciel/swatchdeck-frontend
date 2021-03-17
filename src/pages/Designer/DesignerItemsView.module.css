@@ -1,0 +1,10 @@
+#container{
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin: 25px;
+}
+.item{
+    width: 30%;
+}

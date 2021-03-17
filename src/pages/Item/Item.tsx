@@ -1,17 +1,19 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './Item.css'
 import image from './image1.png';
 import ImageGallery from './ImageGallery';
 import SourceMaterialView from './SourceMaterialView';
-
+import Paper from '../../common/Paper';
 function Item() {
     return (
         <div id='container'>
-            <div id='paper'>
+            <Paper>
                 <div id='images-container'>
                     <div id='image-sidebar-container'>
                         <span className='header'>Coat #123 Experiment</span>
                         <div className='horizontal-divider'></div>
+                        <Link to="designer">Designer Profile</Link>
                         <p><span><b className='box'>Date:</b> 1999</span></p>
                         <p><span><b className='box'>Material:</b> cotton</span></p>
                         <p><span><b className='box'>Country:</b> US</span></p>
@@ -27,7 +29,7 @@ function Item() {
                         <SourceMaterialView/>
                     </div>
                 </div>
-            </div>
+            </Paper>
         </div>
     );
 }

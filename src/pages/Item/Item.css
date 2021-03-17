@@ -2,20 +2,12 @@ body{
     margin: 0px;
     background-color: #eee;
     overflow-y: scroll;
+    font-family: 'Garamond';
+
 }
 #container{
     width: 100%;
     font-family: 'Garamond';
-
-}
-#paper{
-    margin: 3vw 10vw;
-    padding: 15px;
-    overflow: hidden;
-    -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
-    background-color: white;
 }
 #images-container{
     display: flex;
