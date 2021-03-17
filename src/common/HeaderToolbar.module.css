@@ -13,12 +13,21 @@
     overflow-y: scroll;
     height: calc(100vh - 20px);
 }
-
+#addPostButton{
+    background-color: lightskyblue;
+    border-radius: 4px;
+}
+#rightSideContainer{
+    display: flex;
+    justify-content: flex-end;
+    height: 40px;
+}
 #userButton{
     height: 40px;
     width: 40px;
     border-radius: 50%;
     background-color: lightgray;
+    flex-shrink: 0;
 }
 
 #dropdownContainer{

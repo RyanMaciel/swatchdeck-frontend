@@ -3,6 +3,7 @@ import Item from './pages/Item/Item';
 import Designer from './pages/Designer/Designer';
 import Feed from './pages/Feed/Feed';
 import Login from './pages/Login/Login';
+import Path from './pages/Post/Post';
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route path="/login">
             <Login />
+        </Route>
+        <Route path="/post">
+          <Path/>
         </Route>
       </Switch>
     </Router>

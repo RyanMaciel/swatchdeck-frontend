@@ -3,11 +3,6 @@ import styles from './HeaderToolbar.module.css';
 import { Link } from "react-router-dom";
 import { useAuth, useUser } from 'reactfire';
 
-// type DesignerItemThumbProps = {
-//     img: any,
-//     title: string,
-//     className?: string
-// }
 
 function AuthContents(){
   const {data: user} = useUser()
@@ -51,19 +46,29 @@ function UserDropdown() {
   )
 }
 
-function HeaderToolbar(props: React.PropsWithChildren<any>) {
+type HeaderToolbarProps = {
+  showPostButton: boolean,
+}
+function HeaderToolbar({children, showPostButton=true}:(HeaderToolbarProps | React.PropsWithChildren<any>)) {
   return (
     <div id={styles.container}>
         <div id={styles.toolbarContainer}>
             <div>
               <Link to='/feed'>FEED</Link>
             </div>
-            <div>
+            <div id={styles.rightSideContainer}>
+              <div id={styles.addPostButton}>
+                {showPostButton &&
+                  <Link to='/post'>
+                    Create Post
+                  </Link>
+                }
+              </div>
               <UserDropdown/>
             </div>
         </div>
         <div id={styles.pageContent}>
-            {props.children}
+            {children}
         </div>
     </div>
   );
