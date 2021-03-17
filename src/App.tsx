@@ -1,6 +1,8 @@
 import React from 'react';
 import Item from './pages/Item/Item';
-import Designer from './pages/Designer/Designer'
+import Designer from './pages/Designer/Designer';
+import Feed from './pages/Feed/Feed';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,6 +19,9 @@ function App() {
         </Route>
         <Route path="/designer">
             <Designer />
+        </Route>
+        <Route path="/feed">
+            <Feed />
         </Route>
       </Switch>
     </Router>

@@ -1,6 +1,6 @@
 import React from 'react';
 import img from '../Item/image1.png';
-import DesignerItemThumb from './DesignerItemThumb';
+import DesignerItemThumb from '../../common/DesignerItemThumb';
 import styles from './DesignerItemsView.module.css';
 
 function DesignerItemsView() {

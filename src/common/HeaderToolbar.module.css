@@ -1,0 +1,13 @@
+#container{
+    width: 100%
+}
+#toolbarContainer{
+    height: 20px;
+    padding: 15px;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+}
+#pageContent{
+    overflow-y: scroll;
+    height: calc(100vh - 20px);
+}
