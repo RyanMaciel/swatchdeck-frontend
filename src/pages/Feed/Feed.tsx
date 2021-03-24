@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import Paper from '../../common/Paper';
 import DesignerItemThumb from '../../common/DesignerItemThumb';
 import HeaderToolbar from '../../common/HeaderToolbar';
 import img from '../Item/image1.png';
 import styles from './Feed.module.css';
+import { useFeed } from '../../hooks/useFeed';
 
 type DesignerItemThumbProps = {
   designerImg: any,
@@ -26,6 +27,25 @@ function FeedPostHeader({designerImg, children}:DesignerItemThumbProps | React.P
 }
 
 function Designer() {
+
+  type PostData = {
+    title?:string;
+    imageIdentifier?:string;
+    imageUrl?:string;
+    description?:string;
+    userId?:string;
+  }
+  const [getPosts] = useFeed()
+  let docs:Array<PostData>;
+  let setDocs:(arg0:any)=>void;
+  [docs, setDocs] = useState([]);
+
+  useEffect(()=>{
+    getPosts()
+      .then(setDocs)
+      .catch((err)=>{console.log(err)})
+  }, [])
+
   type FeedContents = {
     image?: any,
     text: string,
@@ -75,6 +95,11 @@ function Designer() {
     <HeaderToolbar>
       <div id={styles.feedContainer}>
         <Paper>
+          {docs.map((post)=>(
+            <div className={styles.feedItemContainer}>
+              <DesignerItemThumb img={post.imageUrl} title={post.title ? post.title : "nothing"} includeDesigner={true} designerImg={img}/>
+            </div>
+          ))}
           {multitypeData.map((item:FeedItem, index)=>{
             return (
               <div className={styles.feedEntryContainer} key={index}>

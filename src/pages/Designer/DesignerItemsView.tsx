@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import img from '../Item/image1.png';
 import DesignerItemThumb from '../../common/DesignerItemThumb';
 import styles from './DesignerItemsView.module.css';
-import { useStorage, useUser, useFirestore } from 'reactfire';
 import { useDesigner } from '../../hooks/useDesigner';
 import 'firebase/firestore';
 
 
 function DesignerItemsView() {
-  const { data: user } = useUser();
   const designerId = "hGDbtN8YycdsnaA5UR1WCcihA5C2";
 
   let docs:Array<any>;
