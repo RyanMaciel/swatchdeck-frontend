@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
-import Paper from '../../common/Paper';
 import DesignerItemThumb from '../../common/DesignerItemThumb';
 import HeaderToolbar from '../../common/HeaderToolbar';
 import img from '../Item/image1.png';
@@ -28,12 +27,16 @@ function FeedPostHeader({designerImg, children}:DesignerItemThumbProps | React.P
 
 function Designer() {
 
-  type PostData = {
-    title?:string;
+  type EmbededPostData = {
     imageIdentifier?:string;
-    imageUrl?:string;
     description?:string;
     userId?:string;
+    title?:string;
+  }
+  type PostData = {
+    id?:string;
+    data: EmbededPostData;
+    imageUrl?:string;
   }
   const [getPosts] = useFeed()
   let docs:Array<PostData>;
@@ -90,36 +93,41 @@ function Designer() {
       }
     }
   ]
-
+  console.log(docs);
   return (
     <HeaderToolbar>
       <div id={styles.feedContainer}>
-        <Paper>
-          {docs.map((post)=>(
-            <div className={styles.feedItemContainer}>
-              <DesignerItemThumb img={post.imageUrl} title={post.title ? post.title : "nothing"} includeDesigner={true} designerImg={img}/>
+        {docs.map((post)=>(
+          <div className={styles.feedItemContainer}>
+            <FeedPostHeader designerImg={img}>
+              <DesignerItemThumb img={post.imageUrl}
+                title={post.data.title ? post.data.title : "nothing"}
+                includeDesigner={true}
+                designerImg={img}
+                text={post.data.description}
+              />
+            </FeedPostHeader>
+          </div>
+        ))}
+        {multitypeData.map((item:FeedItem, index)=>{
+          return (
+            <div className={styles.feedEntryContainer} key={index}>
+              <FeedPostHeader designerImg={img}>
+                {item.type === 'item' &&
+                  <div className={styles.feedItemContainer}>
+                    <DesignerItemThumb img={item.contents.image} title={item.contents.text} includeDesigner={true} designerImg={img}/>
+                  </div>
+                }
+                {item.type === 'text' &&
+                  <div className={styles.feedTextContainer} key={index}>
+                    {item.contents.text}
+                  </div>
+                }
+              </FeedPostHeader>
             </div>
-          ))}
-          {multitypeData.map((item:FeedItem, index)=>{
-            return (
-              <div className={styles.feedEntryContainer} key={index}>
-                <FeedPostHeader designerImg={img}>
-                  {item.type === 'item' &&
-                    <div className={styles.feedItemContainer}>
-                      <DesignerItemThumb img={item.contents.image} title={item.contents.text} includeDesigner={true} designerImg={img}/>
-                    </div>
-                  }
-                  {item.type === 'text' &&
-                    <div className={styles.feedTextContainer} key={index}>
-                      {item.contents.text}
-                    </div>
-                  }
-                </FeedPostHeader>
-              </div>
-            )
-            
-          })}
-        </Paper>
+          )
+          
+        })}
       </div>
     </HeaderToolbar>
   );

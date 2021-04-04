@@ -7,3 +7,7 @@
     display: flex;
     flex-direction: column;
 }
+.thumbImage{
+    max-height: 25vw;
+    object-fit: cover;
+}

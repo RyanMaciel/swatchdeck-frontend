@@ -13,10 +13,11 @@ export function useSubmitPost(){
   const firestore = useFirestore();
 
   
-  const submitPost = (files:FileList)=>{
+  const submitPost = (files:FileList, title:string, description:string)=>{
     const timeStamp =  new Date().toUTCString();
     firestore.collection('Posts').doc(postIdentifier).set({
-      title: 'This is a post',
+      title,
+      description,
       imageIdentifier: imageIdentifier,
       timeStamp: timeStamp,
       userId: user.uid,
