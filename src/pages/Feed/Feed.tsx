@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import DesignerItemThumb from '../../common/DesignerItemThumb';
 import HeaderToolbar from '../../common/HeaderToolbar';
 import img from '../Item/image1.png';
+import gStyles from '../../common/GlobalStyles.module.css';
 import styles from './Feed.module.css';
 import { useFeed } from '../../hooks/useFeed';
 
@@ -11,7 +12,7 @@ type DesignerItemThumbProps = {
 }
 function FeedPostHeader({designerImg, children}:DesignerItemThumbProps | React.PropsWithChildren<any>){
   return (
-    <div className={styles.feedPostHeaderContainer}>
+    <div className={[styles.feedPostHeaderContainer, gStyles.header].join(' ')}>
       <Link to="/designer">
         <div className={styles.profileHeader}>
           <img className={styles.designerProfileImage} src={designerImg}/>
@@ -93,12 +94,11 @@ function Designer() {
       }
     }
   ]
-  console.log(docs);
   return (
     <HeaderToolbar>
       <div id={styles.feedContainer}>
         {docs.map((post)=>(
-          <div className={styles.feedItemContainer}>
+          <div className={[styles.feedItemContainer, gStyles.content].join(" ")}>
             <FeedPostHeader designerImg={img}>
               <DesignerItemThumb img={post.imageUrl}
                 title={post.data.title ? post.data.title : "nothing"}
@@ -109,25 +109,6 @@ function Designer() {
             </FeedPostHeader>
           </div>
         ))}
-        {multitypeData.map((item:FeedItem, index)=>{
-          return (
-            <div className={styles.feedEntryContainer} key={index}>
-              <FeedPostHeader designerImg={img}>
-                {item.type === 'item' &&
-                  <div className={styles.feedItemContainer}>
-                    <DesignerItemThumb img={item.contents.image} title={item.contents.text} includeDesigner={true} designerImg={img}/>
-                  </div>
-                }
-                {item.type === 'text' &&
-                  <div className={styles.feedTextContainer} key={index}>
-                    {item.contents.text}
-                  </div>
-                }
-              </FeedPostHeader>
-            </div>
-          )
-          
-        })}
       </div>
     </HeaderToolbar>
   );

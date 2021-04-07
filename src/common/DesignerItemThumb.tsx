@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import gStyles from "./GlobalStyles.module.css";
 import styles from './DesignerItemThumb.module.css';
 
 type DesignerItemThumbProps = {
@@ -14,17 +15,17 @@ type DesignerItemThumbProps = {
 
 function DesignerItemThumb({img, title, includeDesigner=false, designerImg, link, text}:DesignerItemThumbProps) {
   return (
-    <Link to={link ? link : '/'}>
-        <div id={styles.card}>
-            <img src={img} className={styles.thumbImage}/>
-            <div>
-                {title}
-                <div className={styles.textContainer}>
-                  {text}
-                </div>
+    <div id={styles.card}>
+        <Link to={link ? link : '/'}>
+          <img src={img} className={styles.thumbImage}/>
+        </Link>
+        <div>
+            {title}
+            <div className={gStyles.bodyText}>
+              {text}
             </div>
         </div>
-    </Link>
+    </div>
   );
 }
 

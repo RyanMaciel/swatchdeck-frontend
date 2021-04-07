@@ -1,5 +1,6 @@
 import React, { Suspense, useState } from 'react';
 import styles from './HeaderToolbar.module.css';
+import gStyles from './GlobalStyles.module.css';
 import { Link } from "react-router-dom";
 import { useAuth, useUser } from 'reactfire';
 
@@ -52,7 +53,7 @@ type HeaderToolbarProps = {
 function HeaderToolbar({children, showPostButton=true}:(HeaderToolbarProps | React.PropsWithChildren<any>)) {
   return (
     <div id={styles.container}>
-        <div id={styles.toolbarContainer}>
+        <div id={styles.toolbarContainer} className={gStyles.header}>
             <div>
               <Link to='/feed'>FEED</Link>
             </div>
@@ -67,7 +68,7 @@ function HeaderToolbar({children, showPostButton=true}:(HeaderToolbarProps | Rea
               <UserDropdown/>
             </div>
         </div>
-        <div id={styles.pageContent}>
+        <div id={styles.pageContent} className={gStyles.content}>
             {children}
         </div>
     </div>
