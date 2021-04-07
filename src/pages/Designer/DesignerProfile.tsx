@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import img from '../Item/image1.png';
 import styles from './DesignerProfile.module.css';
+import { useDesigner } from '../../hooks/useDesigner';
+import type { DesignerData } from '../../hooks/useDesigner';
+
 function Designer() {
+  const designerId="fzxwdyEFmgKma68e7SH7"
+  
+  const  {getDesignerInfo} = useDesigner();
+  let designer: DesignerData | undefined;
+  let setDesigner: (value:any)=>void;
+  [designer, setDesigner] = useState()
+
+
+  useEffect(()=>{
+    getDesignerInfo(designerId)
+      .then(setDesigner)
+      .catch(console.log);
+  },[])
   return (
     <div id={styles.container}>
         <div id={styles.topLeft}>
@@ -9,7 +25,7 @@ function Designer() {
 
         </div>
         <div id={styles.topRight}>
-            <span>Designer Name</span>
+            <span>{designer?.name}</span>
             <a href='/designer'>website</a>
             <div className='horizontal-divider'></div>
         </div>
@@ -17,7 +33,7 @@ function Designer() {
             
         </div>
         <div id='bottom-right'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          {designer?.description}
         </div>
     </div>
   );

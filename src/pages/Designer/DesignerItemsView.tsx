@@ -10,18 +10,16 @@ function DesignerItemsView() {
   const designerId = "hGDbtN8YycdsnaA5UR1WCcihA5C2";
 
   let docs:Array<any>;
-  let setDocs:(arg0:any)=>void;
+  let setDocs:(value:any)=>void;
   [docs, setDocs] = useState([]);
 
-  const [getPosts] = useDesigner()
+  const {getPosts} = useDesigner()
   useEffect(()=>{
     getPosts(designerId)
       .then(setDocs)
       .catch(()=>{console.log('error')})
   }, [])
-  console.log(docs);
-  let thumbData:[any, string][] = [[img, 'yes'], [img, 'something else'], [img, 'the final thing'],
-  [img, 'jk this is the final thing'], [img, ' thing']] 
+
   return (
     <div id={styles.container}>
         {
@@ -31,15 +29,6 @@ function DesignerItemsView() {
             </div>
             
           ))
-        }
-        {
-          thumbData.map((item, i)=>{
-            return (
-              <div className={styles.item} key={i}>
-                <DesignerItemThumb img={item[0]} title={item[1]}/>
-              </div>
-            )
-          })
         }
     </div>
   );

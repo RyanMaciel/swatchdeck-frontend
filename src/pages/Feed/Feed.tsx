@@ -12,7 +12,7 @@ type DesignerItemThumbProps = {
 }
 function FeedPostHeader({designerImg, children}:DesignerItemThumbProps | React.PropsWithChildren<any>){
   return (
-    <div className={[styles.feedPostHeaderContainer, gStyles.header].join(' ')}>
+    <div className={[styles.feedPostHeaderContainer, gStyles.header, gStyles.border].join(' ')}>
       <Link to="/designer">
         <div className={styles.profileHeader}>
           <img className={styles.designerProfileImage} src={designerImg}/>

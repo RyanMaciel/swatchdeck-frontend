@@ -11,7 +11,6 @@ function AuthContents(){
   const clickHandle = ()=>{
     fireAuth.signOut();
   }
-  console.log(user);
   return (
     <>
       {user &&

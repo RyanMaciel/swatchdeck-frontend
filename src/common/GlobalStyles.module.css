@@ -7,3 +7,6 @@
 .content{
   background-color: #555;
 }
+.border{
+  border: 1px solid #999;
+}
