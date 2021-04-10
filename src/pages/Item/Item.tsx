@@ -26,6 +26,7 @@ function Item() {
     imageUrl?:string;
     description?:string;
     userId?:string;
+    designerId?:string;
   }
 
   let postData:PostData;
@@ -59,7 +60,7 @@ function Item() {
             <div id={styles.imageSidebarContainer}>
               <span className={styles.header}>{postData.title}</span>
               <div className={styles.horizontalDivider}></div>
-              <Link to={{pathname: '/designer/' + postData.userId}}>Designer Profile</Link>
+              <Link to={{pathname: '/designer/' + postData.designerId}}>Designer Profile</Link>
               <p><span><b className={styles.box}>Date:</b> 1999</span></p>
               <p><span><b className={styles.box}>Material:</b> cotton</span></p>
               <p><span><b className={styles.box}>Country:</b> US</span></p>

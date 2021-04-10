@@ -4,6 +4,7 @@ import 'firebase/firestore';
 type DesignerData = {
   name: string;
   description?: string;
+  id: string;
 }
 
 export function useDesigner(){
@@ -41,6 +42,7 @@ export function useDesigner(){
       if(doc.exists){
         const data = doc.data()
         if(data && data.name){
+          data.id = doc.id;
           resolve(data as DesignerData);
         }else{
           reject('empty or mismatched data')
@@ -52,6 +54,25 @@ export function useDesigner(){
     .catch(reject);
   });
   
-  return {getPosts, getDesignerInfo}
+  const getDesignerFromUserId = (userId:string)=>new Promise<DesignerData>((resolve, reject)=>{
+    firestore.collection('Designers').where('userId', '==', userId).get()
+    .then((res)=>{
+      if(res.empty){
+        return reject('No matching entries found')
+      }
+      
+      res.forEach((doc) => {
+        const data = doc.data();
+        if(data){
+          data.id = doc.id;
+          return resolve(data as DesignerData);
+        } else{
+          return reject('designer had incorrect data');
+        }
+      });
+    });
+  });
+
+  return {getPosts, getDesignerInfo, getDesignerFromUserId}
 }
  export type {DesignerData};

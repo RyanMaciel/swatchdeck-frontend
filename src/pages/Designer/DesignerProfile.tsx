@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import {useLocation} from 'react-router-dom';
 import img from '../Item/image1.png';
 import styles from './DesignerProfile.module.css';
 import { useDesigner } from '../../hooks/useDesigner';
 import type { DesignerData } from '../../hooks/useDesigner';
 
 function Designer() {
-  const designerId="fzxwdyEFmgKma68e7SH7"
+
+  const location = useLocation();
+  let locationComponents = location.pathname.split('/')
+  const designerId = locationComponents[locationComponents.length-1];
   
   const  {getDesignerInfo} = useDesigner();
   let designer: DesignerData | undefined;

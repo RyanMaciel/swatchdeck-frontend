@@ -9,11 +9,12 @@ import { useFeed } from '../../hooks/useFeed';
 
 type DesignerItemThumbProps = {
   designerImg: any,
+  designerId?: string,
 }
-function FeedPostHeader({designerImg, children}:DesignerItemThumbProps | React.PropsWithChildren<any>){
+function FeedPostHeader({designerImg, designerId, children}:DesignerItemThumbProps | React.PropsWithChildren<any>){
   return (
     <div className={[styles.feedPostHeaderContainer, gStyles.header, gStyles.border].join(' ')}>
-      <Link to="/designer">
+      <Link to={"/designer/" + designerId}>
         <div className={styles.profileHeader}>
           <img className={styles.designerProfileImage} src={designerImg}/>
           Designer
@@ -33,6 +34,8 @@ function Designer() {
     description?:string;
     userId?:string;
     title?:string;
+    designerId: string;
+
   }
   type PostData = {
     id?:string;
@@ -99,7 +102,7 @@ function Designer() {
       <div id={styles.feedContainer}>
         {docs.map((post)=>(
           <div className={[styles.feedItemContainer, gStyles.content].join(" ")}>
-            <FeedPostHeader designerImg={img}>
+            <FeedPostHeader designerImg={img} designerId={post.data.designerId}>
               <DesignerItemThumb img={post.imageUrl}
                 title={post.data.title ? post.data.title : "nothing"}
                 includeDesigner={true}
