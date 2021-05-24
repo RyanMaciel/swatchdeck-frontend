@@ -25,7 +25,7 @@ function DesignerItemsView() {
         {
           docs.map((docObject, i)=>(
             <div className={styles.item} key={i}>
-              <DesignerItemThumb img={docObject.imageUrl} title={docObject.data.title} link={'/item/' + docObject.id}/>
+              <DesignerItemThumb img={docObject.imageUrls[0]} title={docObject.data.title} link={'/item/' + docObject.id}/>
             </div>
             
           ))

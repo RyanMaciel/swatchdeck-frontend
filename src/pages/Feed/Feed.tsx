@@ -35,12 +35,12 @@ function Designer() {
     userId?:string;
     title?:string;
     designerId: string;
+    imageUrls?:string[];
 
   }
   type PostData = {
     id?:string;
     data: EmbededPostData;
-    imageUrl?:string;
   }
   const [getPosts] = useFeed()
   let docs:Array<PostData>;
@@ -104,7 +104,7 @@ function Designer() {
         {docs.map((post)=>(
           <div className={[styles.feedItemContainer, gStyles.content].join(" ")}>
             <FeedPostHeader designerImg={img} designerId={post.data.designerId}>
-              <DesignerItemThumb img={post.imageUrl}
+              <DesignerItemThumb img={post.data.imageUrls && post.data.imageUrls[0]}
                 title={post.data.title ? post.data.title : "nothing"}
                 includeDesigner={true}
                 designerImg={img}
