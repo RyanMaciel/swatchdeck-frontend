@@ -97,6 +97,7 @@ function Designer() {
       }
     }
   ]
+  console.log(docs);
   return (
     <HeaderToolbar>
       <div id={styles.feedContainer}>

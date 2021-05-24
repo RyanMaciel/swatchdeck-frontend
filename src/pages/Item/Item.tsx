@@ -41,6 +41,7 @@ function Item() {
 
       // Get image urls
       if(doc.imageIdentifier){
+        console.log(doc)
         getImageUrl(doc.imageIdentifier).then((url)=>{
           updateImageUrl(url);
         })

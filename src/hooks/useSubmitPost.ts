@@ -20,29 +20,39 @@ export function useSubmitPost(){
   
   const submitPost = (files:FileList, title:string, description:string)=>
     new Promise<string>((resolve, reject)=>{
+      debugger;
       getDesignerFromUserId(user.uid).then((designer: DesignerData)=>{
-        const timeStamp =  new Date().toUTCString();
-        firestore.collection('Posts').doc(postIdentifier).set({
-          title,
-          description,
-          imageIdentifier: imageIdentifier,
-          timeStamp: timeStamp,
-          userId: user.uid,
-          designerId: designer.id,
-        }).then(() => {
-          return resolve("Document successfully written!");
+
+        const submitMetadata = (imageUrls: string[])=>new Promise<any>((resolve, reject)=>{
+          const timeStamp =  new Date().toUTCString();
+          firestore.collection('Posts').doc(postIdentifier).set({
+            title,
+            description,
+            imageUrls: imageUrls,
+            timeStamp: timeStamp,
+            userId: user.uid,
+            designerId: designer.id,
+          }).then(() => {
+            return resolve("Document successfully written!");
+          })
+          .catch((error) => {
+              reject("Error writing document: " + error);
+          });
         })
-        .catch((error) => {
-            reject("Error writing document: " + error);
-        });
-    
+
         if(files){
           const imageRef = storageRef.child(imageIdentifier + ".jpg");
           const file = files[0]
           imageRef.put(file).then((snapshot) => {
+            imageRef.getDownloadURL().then((url: string)=>{
+              submitMetadata([url]).then(resolve).catch(reject)
+            }).catch(()=>reject("Could not establish image url"))
             console.log('Uploaded a blob or file!');
-          });
+          }).catch(()=>reject("Could not upload file."));
+        } else {
+          return submitMetadata([]).then(resolve).catch(reject);
         }
+    
       }).catch(()=>reject('Could not find Designer id'));
     });
    
