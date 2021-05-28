@@ -67,7 +67,7 @@ function HeaderToolbar({children, showPostButton=true}:(HeaderToolbarProps | Rea
               <UserDropdown/>
             </div>
         </div>
-        <div id={styles.pageContent} className={gStyles.content}>
+        <div id={styles.pageContent} className={gStyles.background}>
             {children}
         </div>
     </div>

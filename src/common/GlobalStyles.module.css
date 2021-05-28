@@ -1,12 +1,19 @@
 .bodyText{
+  color: #ccc;
+}
+.titleText{
   color: #aaa;
+  font-size: 1.3em;
 }
 .header{
-  background-color: #222;
+  background-color: #333;
 }
 .content{
   background-color: #555;
 }
 .border{
   border: 1px solid #999;
+}
+.background{
+  background-color: #555;
 }

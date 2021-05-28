@@ -6,7 +6,7 @@ import img from '../Item/image1.png';
 import gStyles from '../../common/GlobalStyles.module.css';
 import styles from './Feed.module.css';
 import { useFeed } from '../../hooks/useFeed';
-
+import type { PostData } from '../../hooks/DataTypes';
 type DesignerItemThumbProps = {
   designerImg: any,
   designerId?: string,
@@ -29,19 +29,6 @@ function FeedPostHeader({designerImg, designerId, children}:DesignerItemThumbPro
 
 function Designer() {
 
-  type EmbededPostData = {
-    imageIdentifier?:string;
-    description?:string;
-    userId?:string;
-    title?:string;
-    designerId: string;
-    imageUrls?:string[];
-
-  }
-  type PostData = {
-    id?:string;
-    data: EmbededPostData;
-  }
   const [getPosts] = useFeed()
   let docs:Array<PostData>;
   let setDocs:(arg0:any)=>void;
@@ -53,51 +40,8 @@ function Designer() {
       .catch((err)=>{console.log(err)})
   }, [])
 
-  type FeedContents = {
-    image?: any,
-    text: string,
-  }
-  type FeedItem = {
-    type: string;
-    contents: FeedContents;
-  };
-  let multitypeData:FeedItem[] = [
-    {
-      type: 'item',
-      contents:{
-        image: img,
-        text: 'yes'
-      }
-    },
-    {
-      type: 'item',
-      contents:{
-        image: img,
-        text: 'something else'
-      }
-    },
-    {
-      type: 'item',
-      contents:{
-        image: img,
-        text: 'the final thing'
-      }
-    },
-    {
-      type: 'item',
-      contents:{
-        image: img,
-        text: 'jk this is the final thing'
-      }
-    },
-    {
-      type: 'text',
-      contents:{
-        text: 'This is a very cool but also long text post about how things are super cool and i want to post them yuh.'
-      }
-    }
-  ]
-  console.log(docs);
+  //console.log(docs);
+  docs = [{id: '1', data:{designerId: "designerId", title: "This is the post title", description: "This is the post description- chess board midi keyboardaslk'dfja;dslkfjasdlk;fjads lkfnasdo'ifljsnad;fjln asio'fn sadlfk jasdofn asdolfjk asdl;kfj asdokfln asdfoi kadsnf o'aklsdfn als;dk "}}]
   return (
     <HeaderToolbar>
       <div id={styles.feedContainer}>

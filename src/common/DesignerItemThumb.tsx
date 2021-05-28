@@ -15,12 +15,12 @@ type DesignerItemThumbProps = {
 
 function DesignerItemThumb({img, title, includeDesigner=false, designerImg, link, text}:DesignerItemThumbProps) {
   return (
-    <div id={styles.card}>
+    <div id={styles.card} className={gStyles.content}>
         <Link to={link ? link : '/'}>
           <img src={img} className={styles.thumbImage}/>
         </Link>
         <div>
-            {title}
+            <div className={gStyles.titleText}>{title}</div>
             <div className={gStyles.bodyText}>
               {text}
             </div>
