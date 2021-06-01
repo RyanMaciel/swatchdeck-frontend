@@ -3,7 +3,7 @@ type EmbededPostData = {
   description?:string;
   userId?:string;
   title?:string;
-  designerId: string;
+  designerId?: string;
   imageUrls?:string[];
 
 }

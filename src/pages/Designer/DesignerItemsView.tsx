@@ -7,7 +7,7 @@ import 'firebase/firestore';
 
 
 function DesignerItemsView() {
-  const designerId = "hGDbtN8YycdsnaA5UR1WCcihA5C2";
+  const designerId = "fzxwdyEFmgKma68e7SH7";
 
   let docs:Array<any>;
   let setDocs:(value:any)=>void;
@@ -17,15 +17,15 @@ function DesignerItemsView() {
   useEffect(()=>{
     getPosts(designerId)
       .then(setDocs)
-      .catch(()=>{console.log('error')})
+      .catch((err)=>{console.log('error getting designer items: '); console.log(err)})
   }, [])
-
+  console.log(docs);
   return (
     <div id={styles.container}>
         {
           docs.map((docObject, i)=>(
             <div className={styles.item} key={i}>
-              <DesignerItemThumb img={docObject.imageUrls[0]} title={docObject.data.title} link={'/item/' + docObject.id}/>
+              <DesignerItemThumb img={docObject.data.imageUrls[0]} title={docObject.data.title} link={'/item/' + docObject.id}/>
             </div>
             
           ))

@@ -1,5 +1,6 @@
 import { useStorage, useFirestore } from 'reactfire';
 import 'firebase/firestore';
+import type {PostData} from './DataTypes';
 
 type DesignerData = {
   name: string;
@@ -12,25 +13,19 @@ export function useDesigner(){
   
   const storageRef = useStorage().ref();
 
-  const getPosts = (userId: string)=>new Promise<Array<object>>((resolve, reject) => {
-    firestore.collection('Posts').where('userId', '==', userId)
+  const getPosts = (userId: string)=>new Promise<Array<PostData>>((resolve, reject) => {
+    firestore.collection('Posts').where('designerId', '==', userId)
     .get()
     .then((res) => {
       if(res.empty){
         return reject('No matching entries found')
       }
-      const docArray:Array<object> = [];
-      let count = 0;
+      const docArray:Array<PostData> = [];
       res.forEach((doc) => {
-        storageRef.child(doc.data().imageIdentifier + '.jpg').getDownloadURL()
-        .then((url)=>{
-          count++;
-          docArray.push({data: doc.data(), imageUrl: url, id:doc.id});
-          if(count == res.size){
-            resolve(docArray);
-          }
-        }).catch(reject);
+        console.log(doc.data());
+        docArray.push({data: doc.data(), id:doc.id});
       });
+      resolve(docArray);
     })
     .catch(reject);
   });

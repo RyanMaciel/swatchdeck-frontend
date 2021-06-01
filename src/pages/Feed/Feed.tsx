@@ -41,7 +41,7 @@ function Designer() {
   }, [])
 
   //console.log(docs);
-  docs = [{id: '1', data:{designerId: "designerId", title: "This is the post title", description: "This is the post description- chess board midi keyboardaslk'dfja;dslkfjasdlk;fjads lkfnasdo'ifljsnad;fjln asio'fn sadlfk jasdofn asdolfjk asdl;kfj asdokfln asdfoi kadsnf o'aklsdfn als;dk "}}]
+  //docs = [{id: '1', data:{designerId: "designerId", title: "This is the post title", description: "This is the post description- chess board midi keyboardaslk'dfja;dslkfjasdlk;fjads lkfnasdo'ifljsnad;fjln asio'fn sadlfk jasdofn asdolfjk asdl;kfj asdokfln asdfoi kadsnf o'aklsdfn als;dk "}}]
   return (
     <HeaderToolbar>
       <div id={styles.feedContainer}>
