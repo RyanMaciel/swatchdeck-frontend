@@ -15,14 +15,22 @@ type DesignerItemThumbProps = {
 
 function DesignerItemThumb({img, title, includeDesigner=false, designerImg, link, text}:DesignerItemThumbProps) {
   return (
-    <div id={styles.card} className={gStyles.content}>
-        <Link to={link ? link : '/'}>
-          <img src={img} className={styles.thumbImage}/>
-        </Link>
-        <div>
-            <div className={gStyles.titleText}>{title}</div>
-            <div className={gStyles.bodyText}>
-              {text}
+    <div id={styles.card} className={gStyles.roundBorder}>
+        <div id={styles.imageContainer}>
+          <Link to={link ? link : '/'}>
+            <img src={img} className={styles.thumbImage}/>
+          </Link>
+        </div>
+        <div className={gStyles.sepLine}/>
+        <div id={styles.bodyContainer}>
+            <div>
+              <div className={gStyles.titleText}>{title}</div>
+              <div className={gStyles.titleText} id={styles.designerName}>Ryan Maciel</div>
+            </div>
+            <div>
+              <div className={gStyles.bodyText} id={styles.description}>
+                {text}
+              </div>
             </div>
         </div>
     </div>

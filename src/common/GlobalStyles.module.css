@@ -1,9 +1,14 @@
 .bodyText{
-  color: #ccc;
+  color: #000;
+  font-size: 18px;
 }
 .titleText{
-  color: #aaa;
-  font-size: 1.3em;
+  font-family: Bebas Neue;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 60px;
+  text-decoration-line: underline;
 }
 .header{
   background-color: #333;
@@ -15,5 +20,17 @@
   border: 1px solid #999;
 }
 .background{
-  background-color: #555;
+  background-color: #fff;
+}
+.roundBorder{
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.sepLine{
+  height: 2px;
+  width: 100%;
+  background-color: black;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }

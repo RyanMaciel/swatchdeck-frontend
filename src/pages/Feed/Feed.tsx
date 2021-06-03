@@ -46,15 +46,13 @@ function Designer() {
     <HeaderToolbar>
       <div id={styles.feedContainer}>
         {docs.map((post)=>(
-          <div className={[styles.feedItemContainer, gStyles.content].join(" ")}>
-            <FeedPostHeader designerImg={img} designerId={post.data.designerId}>
-              <DesignerItemThumb img={post.data.imageUrls && post.data.imageUrls[0]}
-                title={post.data.title ? post.data.title : "nothing"}
-                includeDesigner={true}
-                designerImg={img}
-                text={post.data.description}
-              />
-            </FeedPostHeader>
+          <div className={[styles.feedItemContainer].join(" ")}>
+            <DesignerItemThumb img={post.data.imageUrls && post.data.imageUrls[0]}
+              title={post.data.title ? post.data.title : "nothing"}
+              includeDesigner={true}
+              designerImg={img}
+              text={post.data.description}
+            />
           </div>
         ))}
       </div>

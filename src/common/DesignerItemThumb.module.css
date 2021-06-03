@@ -11,4 +11,21 @@
 .thumbImage{
     max-height: 25vw;
     object-fit: cover;
+    margin:auto;
+}
+#imageContainer{
+    display: flex;
+    justify-content: center;
+}
+#designerName{
+    font-size: 30px;
+    line-height: 30px;
+}
+
+#bodyContainer{
+    display: flex;
+}
+
+#description{
+    margin: 6px 16px;
 }
